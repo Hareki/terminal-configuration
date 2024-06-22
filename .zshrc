@@ -8,6 +8,15 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -143,6 +152,14 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 ### zsh-autosuggestions config
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 bindkey '^[[Z' autosuggest-accept
+
+### start ssh agent and add keys to it - suppress messages if everything goes smoothly
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+ eval `ssh-agent -s` > /dev/null 
+ ssh-add ~/.ssh/id_ed25519_personal &> /dev/null
+ ssh-add ~/.ssh/id_ed25519_zigvy &> /dev/null
+fi
+
 
 ### https://github.com/zsh-users/zsh-syntax-highlighting?tab=readme-ov-file#why-must-zsh-syntax-highlightingzsh-be-sourced-at-the-end-of-the-zshrc-file
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
