@@ -34,6 +34,7 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     os_icon                 # os identifier
+    context                 # user@hostname
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -86,7 +87,7 @@
     gcloud                  # google cloud cli account and project (https://cloud.google.com/)
     google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
     toolbox                 # toolbox name (https://github.com/containers/toolbox)
-    context                 # user@hostname
+    # context                 # user@hostname
     nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
     ranger                  # ranger shell (https://github.com/ranger/ranger)
     yazi                    # yazi shell (https://github.com/sxyazi/yazi)
@@ -195,10 +196,9 @@
   # When the OS is Ubuntu, it means we're on WSL, add the extra space at the end to balance the padding
   POWERLEVEL9K_LINUX_UBUNTU_ICON=$'\uf303 ' # OS identifier color.
   # typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND=0
-  typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND='#f7f7f7'
   # typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=7
-  # typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND='#d55fde'
-  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND='#42a2f0'
+  typeset -g POWERLEVEL9K_OS_ICON_FOREGROUND='#f7f7f7'
+  typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND='#7287fd'
   # Custom icon.
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
@@ -228,7 +228,7 @@
   ##################################[ dir: current directory ]##################################
   # Current directory background color.
   # typeset -g POWERLEVEL9K_DIR_BACKGROUND=4
-  typeset -g POWERLEVEL9K_DIR_BACKGROUND='#d55fde'
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND='#ea76cb'
   # Default current directory foreground color.
   # typeset -g POWERLEVEL9K_DIR_FOREGROUND=254
   typeset -g POWERLEVEL9K_DIR_FOREGROUND='#f7f7f7'
@@ -989,25 +989,34 @@
 
   ##################################[ context: user@hostname ]##################################
   # Context color when running with privileges.
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=1
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND=0
+  # typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=1
+  # typeset -g POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND=0
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="#f7f7f7"
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND="#fe782a"
   # Context color in SSH without privileges.
-  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=3
-  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_BACKGROUND=0
+  # typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=3
+  # typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_BACKGROUND=0
+  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND="#f7f7f7"
+  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_BACKGROUND="#fe782a"
   # Default context color (no privileges, no SSH).
-  typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=3
-  typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=0
+  # typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=3
+  # typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND=0
+  typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND="#f7f7f7"
+  typeset -g POWERLEVEL9K_CONTEXT_BACKGROUND="#fe782a"
 
   # Context format when running with privileges: user@hostname.
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n@%m'
+  # typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n@%m'
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%n'
   # Context format when in SSH without privileges: user@hostname.
-  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%n@%m'
+  # typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%n@%m'
+  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%n'
   # Default context format (no privileges, no SSH): user@hostname.
-  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m'
+  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n@%m'
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%n'
 
   # Don't show context unless running with privileges or in SSH.
   # Tip: Remove the next line to always show context.
-  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
+  # typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
 
   # Custom icon.
   # typeset -g POWERLEVEL9K_CONTEXT_VISUAL_IDENTIFIER_EXPANSION='⭐'
@@ -1774,8 +1783,8 @@
 
   ####################################[ time: current time ]####################################
   # Current time color.
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=0
-  typeset -g POWERLEVEL9K_TIME_BACKGROUND='#f7f7f7'
+  typeset -g POWERLEVEL9K_TIME_FOREGROUND="#181825"
+  typeset -g POWERLEVEL9K_TIME_BACKGROUND='#89b4fa'
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%I:%M:%S %p}'
   # If set to true, time will update when you hit enter. This way prompts for the past
